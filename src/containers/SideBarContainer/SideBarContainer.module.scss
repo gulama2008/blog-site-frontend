@@ -5,11 +5,9 @@
   padding-right: 10px;
   background-color: #0f1d42;
   color: #c8dcfe;
-  
-  // color: #b9c7e4;
 }
 
-.category_container{
+.head_container{
   border-bottom: 1px solid #364864;
   padding-bottom: 20px;
   margin-bottom: 20px;
@@ -18,8 +16,24 @@
   display: flex;
   align-items: center;
   gap:5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   color: #f4f9fc;
+  font-size: 30px;
+}
+.link{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.link_icon{
+  width: 20px;
+  height: 20px;
+}
+
+.link_content{
+  font-size: 20px;
+  font-weight: 600;
 }
 .content{
   // padding-left: 20px;

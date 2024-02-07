@@ -13,8 +13,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/admin" element={<AdminPage />} />
-          <Route path="/:id" element={<BlogPage />} />
+          <Route path="/admin/*" element={<AdminPage />} />
+          <Route path="/blog/:id" element={<BlogPage />} />
         </Routes>
       </BrowserRouter>
     </BlogContextProvider>
