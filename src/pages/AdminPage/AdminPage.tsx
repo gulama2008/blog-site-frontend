@@ -1,9 +1,13 @@
-import React from 'react'
-
+import MainContainer from "../../containers/MainContainer/MainContainer"
+import SideBarContainer from "../../containers/SideBarContainer/SideBarContainer"
+import styles from "./AdminPage.module.scss"
 const AdminPage = () => {
   return (
-    <div>AdminPage</div>
-  )
+    <div className={styles.container}>
+      <SideBarContainer />
+      <MainContainer />
+    </div>
+  );
 }
 
 export default AdminPage
