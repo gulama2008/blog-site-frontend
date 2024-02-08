@@ -1,17 +1,41 @@
-.container{
-    margin: 50px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    
+.container {
+  margin: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.header{
-    font-size: 20px;
-    margin-bottom: 30px;
+.header {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.bloglist{
-    width: 80%;
-    // align-self: center;
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input {
+  height: 20px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  background-color: #5486e5;
+  color: white;
+}
+
+.total {
+  font-size: 20px;
+}
+
+.bloglist {
+  width: 80%;
+  // align-self: center;
 }
