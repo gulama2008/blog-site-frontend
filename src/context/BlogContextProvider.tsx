@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const BlogContext = createContext<any>(null);
 import seed from "../data.json";
-
+import commentSeed from "../comment.json";
 export interface CommentItem {
   id: number;
   content: string;
@@ -15,13 +15,15 @@ export interface BlogItem {
   publishDate: string;
   comments: CommentItem[];
   tags: string[];
+  views: number;
 }
 const BlogContextProvider = ({ children }: any) => {
-  const [data, setData] = useState<any>(seed);
+  const [data, setData] = useState<BlogItem[]>(seed);
+  const [comments, setComments] = useState<CommentItem[]>(commentSeed);
   const [activeSideBarItemIndex, setActiveSideBarItemIndex] =
     useState<number>(0);
   console.log(data);
-  
+
   return (
     <BlogContext.Provider
       value={{
@@ -29,6 +31,8 @@ const BlogContextProvider = ({ children }: any) => {
         setActiveSideBarItemIndex,
         data,
         setData,
+        comments,
+        setComments,
       }}
     >
       {children}

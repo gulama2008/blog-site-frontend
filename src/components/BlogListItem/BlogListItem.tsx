@@ -22,12 +22,15 @@ const BlogListItem = ({ item, index }: BlogListItemProps) => {
         <div className={styles.options}>
           <div className={styles.icon_container}>
             <img src={tag} alt="edit tags" className={styles.icon} />
+            <span className={styles.tooltiptext}>Edit Tags</span>
           </div>
           <div className={styles.icon_container}>
             <img src={eye} alt="check article" className={styles.icon} />
+            <span className={styles.tooltiptext}>View Blog</span>
           </div>
           <div className={styles.icon_container}>
             <img src={bin} alt="delete article" className={styles.icon} />
+            <span className={styles.tooltiptext}>Delete</span>
           </div>
         </div>
         <div className={styles.statistics_container}>

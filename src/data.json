@@ -15,7 +15,9 @@
         "content": "comment2",
         "commentDate": "2024-02-02"
       }
-    ]
+    ],
+    "tags": ["react"],
+    "views": 3
   },
   {
     "id": 2,
@@ -33,7 +35,9 @@
         "content": "comment4",
         "commentDate": "2024-02-04"
       }
-    ]
+    ],
+    "tags": ["java"],
+    "views": 4
   },
   {
     "id": 3,
@@ -51,6 +55,8 @@
         "content": "comment6",
         "commentDate": "2024-02-06"
       }
-    ]
+    ],
+    "tags": ["java","react"],
+    "views": 5
   }
 ]
