@@ -1,4 +1,3 @@
-import { useContext, useEffect, useState } from "react";
 import styles from "./MainContainer.module.scss";
 import { Route, Routes } from "react-router-dom";
 import BlogListContainer from "../BlogListContainer/BlogListContainer";
@@ -6,11 +5,7 @@ import NewBlogContainer from "../NewBlogContainer/NewBlogContainer";
 import CommentsContainer from "../CommentsContainer/CommentsContainer";
 import TagsContainer from "../TagsContainer/TagsContainer";
 import StatisticsContainer from "../StatisticsContainer/StatisticsContainer";
-
 const MainContainer = () => {
-  
-
-  
 
   return (
     <div className={styles.container}>
