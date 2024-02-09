@@ -1,9 +1,24 @@
 .container{
-    // width: 1200px;
-    // height: 800px;
-    display: flex;
+    width: 100%;
+    min-height: 100%;
+     display: flex;
+    // justify-content: center;
+    align-items:stretch;
+    // position: absolute;
+    top: 50px;
+    // position: relative;
+}
+.top{
+    height: 60px;
+    // position: absolute;
+    top: 0;
+}
+.main{
+     display: flex;
     // justify-content: center;
     align-items:stretch;
     width: 100%;
     height: 100%;
+    // position: absolute;
+    top: 50px;
 }

@@ -1,0 +1,103 @@
+.container {
+  display: flex;
+  // justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  border: 1px solid #d0d9dc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  min-height: 80px;
+  color: #647c87;
+  cursor: pointer;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: white;
+  width: 100%;
+}
+
+.container:hover {
+  // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.details {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content {
+  color: #27363d;
+}
+
+.right {
+  //make this single element align to the right itself
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+input:checked {
+  & + p {
+    -webkit-line-clamp: unset;
+  }
+}
+.name{
+    font-weight: 700;
+}
+.options{
+  display: flex;
+  gap: 10px;
+}
+
+.icon_container{
+  width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.icon_container .tooltiptext {
+  visibility: hidden;
+  text-wrap: nowrap;
+  width: auto;
+  background-color: rgb(32, 32, 32);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+}
+
+.icon_container .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.icon_container:hover .tooltiptext {
+  visibility: visible;
+}
+
+.icon_container:hover{
+    background-color: #edeff1;
+    border-radius: 5px;
+}
+
+.icon{
+    width: 20px;
+    height: 20px;
+}

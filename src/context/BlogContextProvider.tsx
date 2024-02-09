@@ -5,8 +5,11 @@ import seed from "../data.json";
 import commentSeed from "../comment.json";
 export interface CommentItem {
   id: number;
+  username: string;
   content: string;
   commentDate: string;
+  articleId: number;
+  blocked: boolean;
 }
 export interface BlogItem {
   id: number;

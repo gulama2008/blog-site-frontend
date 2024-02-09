@@ -18,7 +18,7 @@ const SideBarContainer = () => {
   return (
     <div className={styles.container}>
       <div className={styles.head_container}>
-        <div className={styles.title}>Siyu's Blog</div>
+        <div className={styles.title}>MY DASHBOARD</div>
         <div className={styles.link}>
           <img src={link} alt="" className={ styles.link_icon} />
           <div className={styles.link_content}>Go To My Blog</div>

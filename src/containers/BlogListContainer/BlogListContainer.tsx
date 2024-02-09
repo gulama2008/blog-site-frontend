@@ -65,7 +65,7 @@ const BlogListContainer = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.total}>All Blogs (total {data.length})</div>
+        <div className={styles.total}>All Articles (total {data.length})</div>
         <form className={styles.filter} onSubmit={handleSubmit(formSubmit)}>
           From
           <input

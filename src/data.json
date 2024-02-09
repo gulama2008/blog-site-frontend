@@ -7,13 +7,19 @@
     "comments": [
       {
         "id": 1,
+        "username": "Tom",
         "content": "comment1",
-        "commentDate": "2024-02-01"
+        "commentDate": "2024-02-01",
+        "articleId": 1,
+        "blocked": false
       },
       {
         "id": 2,
+        "username": "Jerry",
         "content": "comment2",
-        "commentDate": "2024-02-02"
+        "commentDate": "2024-02-02",
+        "articleId": 1,
+        "blocked": true
       }
     ],
     "tags": ["react"],
@@ -27,13 +33,19 @@
     "comments": [
       {
         "id": 3,
+        "username": "Mickey",
         "content": "comment3",
-        "commentDate": "2024-02-03"
+        "commentDate": "2024-02-03",
+        "articleId": 2,
+        "blocked": false
       },
       {
         "id": 4,
+        "username": "Donald",
         "content": "comment4",
-        "commentDate": "2024-02-04"
+        "commentDate": "2024-02-04",
+        "articleId": 2,
+        "blocked": false
       }
     ],
     "tags": ["java"],
@@ -47,13 +59,19 @@
     "comments": [
       {
         "id": 5,
+        "username": "Snoopy",
         "content": "comment5",
-        "commentDate": "2024-02-05"
+        "commentDate": "2024-02-05",
+        "articleId": 3,
+        "blocked": false
       },
       {
         "id": 6,
+        "username": "Garfield",
         "content": "comment6",
-        "commentDate": "2024-02-06"
+        "commentDate": "2024-02-06",
+        "articleId": 3,
+        "blocked": false
       }
     ],
     "tags": ["java","react"],
