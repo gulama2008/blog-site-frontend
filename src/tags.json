@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "java"
+  },
+  {
+    "id": 2,
+    "name": "react"
+  },
+  {
+    "id": 3,
+    "name": "JavaScript"
+  },
+  {
+    "id": 4,
+    "name": "AWS"
+  }
+]

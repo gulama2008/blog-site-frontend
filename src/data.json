@@ -22,7 +22,7 @@
         "blocked": true
       }
     ],
-    "tags": ["react"],
+    "tags": [1],
     "views": 3
   },
   {
@@ -48,7 +48,7 @@
         "blocked": false
       }
     ],
-    "tags": ["java"],
+    "tags": [2],
     "views": 4
   },
   {
@@ -74,7 +74,7 @@
         "blocked": false
       }
     ],
-    "tags": ["java","react"],
+    "tags": [3,4],
     "views": 5
   }
 ]

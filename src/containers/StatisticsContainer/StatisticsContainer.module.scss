@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 80%;
+}
+
+.header{
+    font-weight: 600;
+}
+
+.num_container {
+  height: 100px;
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.num {
+  width: 22%;
+//   background-color: #f6fafd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // gap: 5px;
+  align-items: center;
+}
+.data {
+  font-weight: 800;
+  font-size: 30px;
+}
+
+.title_container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.icon {
+  height: 18px;
+  width: 18px;
+}
+
+.title {
+  color: #155e85;
+  font-size: 15px;
+}
+
+.divider_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.divider{
+    height: 80px;
+    width: 20px;
+}
