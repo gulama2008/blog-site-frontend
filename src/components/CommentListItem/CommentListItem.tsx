@@ -1,29 +1,59 @@
-import { BlogContext, CommentItem } from "../../context/BlogContextProvider";
+import {
+  ArticleItem,
+  BlogContext,
+  CommentItem,
+  UserItem,
+} from "../../context/BlogContextProvider";
 import styles from "./CommentListItem.module.scss";
 import avatar from "../../assets/avatar.png";
 import { Utils } from "../../services/utils";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import ShowMoreText from "react-show-more-text";
 import bin from "../../assets/bin.png";
 import block from "../../assets/block.png";
 import unblock from "../../assets/unblock.png";
+import { CommentService } from "../../services/comment-service";
 export interface CommentListItemProps {
   comment: CommentItem;
   index: number;
 }
 const CommentListItem = ({ comment, index }: CommentListItemProps) => {
   const { data } = useContext(BlogContext);
-  const blogItem = Utils.getBlogItemByComment(comment, data);
+  const [article, setArticle] = useState<ArticleItem>();
+  const [user, setUser] = useState<UserItem>();
+  const [isBlocked, setIsBlocked] = useState<boolean>(comment.blocked);
+  console.log("testtesttest");
+  
+  useEffect(() => {
+    CommentService.getUserByCommentId(index)
+      .then((data) => setUser(data))
+      .catch((e) => console.error(e));
+    CommentService.getArticleByCommentId(index)
+      .then((data) => setArticle(data))
+      .catch((e) => console.error(e));
+  }, []);
+  // const blogItem = Utils.getBlogItemByComment(comment, data);
+  // const user = Utils.getUserById(index, users);
   const executeOnClick = (isExpanded: any) => {
     console.log(isExpanded);
   };
+
+  const handleBlock = () => {
+    const data = {
+      blocked: !isBlocked,
+    };
+    CommentService.updateCommentById(index, data)
+      .then(() => setIsBlocked(!isBlocked))
+      .catch((e) => console.error(e));
+  };
+
   return (
     <div className={styles.container}>
       <img src={avatar} alt="" />
       <div className={styles.details}>
         <div>
-          <span className={styles.name}>{comment.username}</span> has made a
-          comment on <span className={styles.name}>{blogItem.title}</span>
+          <span className={styles.name}>{user?.username}</span> has made a
+          comment on <span className={styles.name}>{article?.title}</span>
         </div>
         <div>
           <ShowMoreText
@@ -43,8 +73,8 @@ const CommentListItem = ({ comment, index }: CommentListItemProps) => {
         </div>
       </div>
       <div className={styles.right}>
-        <div className={styles.options}>
-          {comment.blocked ? (
+        <div className={styles.options} onClick={handleBlock}>
+          {isBlocked ? (
             <div className={styles.icon_container}>
               <img src={unblock} alt="" className={styles.icon} />
               <span className={styles.tooltiptext}>Unblock comment</span>

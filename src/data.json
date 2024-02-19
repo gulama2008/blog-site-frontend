@@ -7,7 +7,7 @@
     "comments": [
       {
         "id": 1,
-        "username": "Tom",
+        "userId": 1,
         "content": "comment1",
         "commentDate": "2024-02-01",
         "articleId": 1,
@@ -15,7 +15,7 @@
       },
       {
         "id": 2,
-        "username": "Jerry",
+        "userId": 2,
         "content": "comment2",
         "commentDate": "2024-02-02",
         "articleId": 1,
@@ -33,7 +33,7 @@
     "comments": [
       {
         "id": 3,
-        "username": "Mickey",
+        "userId":3,
         "content": "comment3",
         "commentDate": "2024-02-03",
         "articleId": 2,
@@ -41,14 +41,14 @@
       },
       {
         "id": 4,
-        "username": "Donald",
+        "userId": 4,
         "content": "comment4",
         "commentDate": "2024-02-04",
         "articleId": 2,
         "blocked": false
       }
     ],
-    "tags": [2],
+    "tags": [1,2],
     "views": 4
   },
   {
@@ -59,7 +59,7 @@
     "comments": [
       {
         "id": 5,
-        "username": "Snoopy",
+        "userId": 5,
         "content": "comment5",
         "commentDate": "2024-02-05",
         "articleId": 3,
@@ -67,7 +67,7 @@
       },
       {
         "id": 6,
-        "username": "Garfield",
+        "userId": 6,
         "content": "comment6",
         "commentDate": "2024-02-06",
         "articleId": 3,

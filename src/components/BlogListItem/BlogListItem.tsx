@@ -1,4 +1,4 @@
-import { BlogItem } from "../../context/BlogContextProvider";
+import { ArticleItem, BlogContext, BlogItem } from "../../context/BlogContextProvider";
 import styles from "./BlogListItem.module.scss";
 import eye from "../../assets/eye.png";
 import bin from "../../assets/bin.png";
@@ -7,12 +7,28 @@ import comment from "../../assets/comments.png";
 import visit from "../../assets/visit.png";
 import { Utils } from "../../services/utils";
 import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
 export interface BlogListItemProps {
-  item: BlogItem;
+  item: ArticleItem;
   index: number;
 }
 const BlogListItem = ({ item, index }: BlogListItemProps) => {
+  const { setCurrentArticleId, setShowTagModal } =
+    useContext(BlogContext);
+  
   const publishDate = Utils.changeDateFormat(item.publishDate);
+
+  const handleEditTags = (e: any) => { 
+    e.preventDefault();
+    setCurrentArticleId(index);
+    setShowTagModal(true);
+  }
+  const handleCheckArticle = (e: any) => {
+    e.preventDefault();
+  };
+  const handleDeleteArticle = (e: any) => {
+    e.preventDefault();
+  };
 
   return (
     <Link to={item.id.toString()}>
@@ -23,15 +39,15 @@ const BlogListItem = ({ item, index }: BlogListItemProps) => {
         </div>
         <div className={styles.options_container}>
           <div className={styles.options}>
-            <div className={styles.icon_container}>
+            <div className={styles.icon_container} onClick={handleEditTags}>
               <img src={tag} alt="edit tags" className={styles.icon} />
               <span className={styles.tooltiptext}>Edit Tags</span>
             </div>
-            <div className={styles.icon_container}>
+            <div className={styles.icon_container} onClick={handleCheckArticle}>
               <img src={eye} alt="check article" className={styles.icon} />
               <span className={styles.tooltiptext}>View Blog</span>
             </div>
-            <div className={styles.icon_container}>
+            <div className={styles.icon_container} onClick={handleDeleteArticle}>
               <img src={bin} alt="delete article" className={styles.icon} />
               <span className={styles.tooltiptext}>Delete</span>
             </div>

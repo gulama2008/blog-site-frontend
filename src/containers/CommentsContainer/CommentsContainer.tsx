@@ -1,10 +1,12 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { BlogContext, CommentItem } from '../../context/BlogContextProvider';
 import CommentListItem from '../../components/CommentListItem/CommentListItem';
 import styles from "./CommentsContainer.module.scss"
 const CommentsContainer = () => {
   const { comments } = useContext(BlogContext);
   const [commentsDisplay, setCommentsDisplay] = useState<CommentItem[]>(comments);
+  useEffect(() => { setCommentsDisplay(comments)},[comments])
+  
   const handleChange = (e:any) => { 
     if (e.target.value == "") {
       setCommentsDisplay(comments);

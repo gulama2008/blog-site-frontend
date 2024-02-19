@@ -1,14 +1,16 @@
 import { useContext, useState } from "react";
-import { BlogContext, BlogItem } from "../../context/BlogContextProvider";
+import { ArticleItem, BlogContext, BlogItem } from "../../context/BlogContextProvider";
 import BlogListItem from "../../components/BlogListItem/BlogListItem";
 import styles from "./BlogListContainer.module.scss";
 import { useForm } from "react-hook-form";
+import TagModal from "../../components/TagModal/TagModal";
 export interface FormData {
   fromDate: string;
   toDate: string;
 }
 const BlogListContainer = () => {
-  const { data, setData } = useContext(BlogContext);
+  const { data, setData, showTagModal, setShowTagModal } =
+    useContext(BlogContext);
   // const [fromDate, setFromDate] = useState<string>();
   // const [toDate, setToDate] = useState<string>();
   const [allData, setAllData] = useState<BlogItem[]>(data);
@@ -90,10 +92,15 @@ const BlogListContainer = () => {
         </form>
       </div>
       <div className={styles.bloglist}>
-        {data.map((item: any, index: number) => {
-          return <BlogListItem item={item} index={index} key={index} />;
+        {data.map((item: ArticleItem, index: number) => {
+          return <BlogListItem item={item} index={item.id} key={index} />;
         })}
       </div>
+      {showTagModal && (
+        <div>
+          <TagModal />
+        </div>
+      )}
     </div>
   );
 };
