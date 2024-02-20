@@ -61,6 +61,7 @@ const BlogContextProvider = ({ children }: any) => {
   const [viewsChange, setViewsChange] = useState<number>(0);
   const [currentArticleId, setCurrentArticleId] = useState<number>();
   const [showTagModal, setShowTagModal] = useState<boolean>(false);
+  // const [tagsOfCurrentArticle, setTagsOfCurrentArticle] = useState<TagItem[]>([]);
 
   useEffect(() => {
     ArticleService.get()

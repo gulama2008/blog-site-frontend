@@ -22,3 +22,8 @@
     // position: absolute;
     top: 50px;
 }
+
+.disabled{
+    opacity: 0.3;
+    pointer-events: none;
+}

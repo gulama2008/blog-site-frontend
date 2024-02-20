@@ -6,6 +6,8 @@ import comment from "../../assets/comment.png";
 import tag from "../../assets/tag.png";
 import link from "../../assets/link.png";
 import statistics from "../../assets/statistics.png"
+import { useContext, useState, useEffect } from "react";
+import { BlogContext } from "../../context/BlogContextProvider";
 const SideBarContainer = () => {
   const sideBarItemList = [
     
@@ -14,9 +16,18 @@ const SideBarContainer = () => {
     ["Categories/Tags", tag,"tags"],
     ["Statistics", statistics,"statistics"],
   ];
-
+const {showTagModal } = useContext(BlogContext);
+const [showModalClass, setShowModalClass] = useState<string>("");
+const containerClass = styles.container;
+useEffect(() => {
+  if (showTagModal) {
+    setShowModalClass(`${containerClass} ${styles.disabled}`);
+  } else {
+    setShowModalClass(`${containerClass}`);
+  }
+}, [showTagModal]);
   return (
-    <div className={styles.container}>
+    <div className={showModalClass}>
       <div className={styles.head_container}>
         <div className={styles.title}>MY DASHBOARD</div>
         <div className={styles.link}>

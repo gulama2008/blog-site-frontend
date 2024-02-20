@@ -48,15 +48,15 @@ export class Utils {
   public static countTags(tags: TagItem[]) {
     let resultArr: any = [];
     resultArr.push(["tagname", "tagcount"]);
-    tags.map((tag: TagItem) => { 
+    tags.map((tag: TagItem) => {
       console.log([tag.name, tag.articles?.length]);
-      
+
       resultArr.push([tag.name, tag.articles?.length]);
-    })
+    });
     // this.getArticlesByTagId(tags, resultArr)
     //   .then(() => {
     //     console.log(resultArr);
-        
+
     //     return resultArr;
     //   })
     //   .catch((e) => console.error(e));
@@ -74,5 +74,20 @@ export class Utils {
 
   public static getUserById(id: number, users: UserItem[]) {
     return users.find((user: UserItem) => user.id == id);
+  }
+
+  public static getTagsOthers(
+    tags: TagItem[],
+    tagsOfArticle: TagItem[]
+  ): TagItem[] {
+    console.log(tags);
+    console.log(tagsOfArticle);
+
+    const tagsOthers = tags.filter((tag: TagItem) => {
+      return (
+        tagsOfArticle.map((tag1: TagItem) => tag1.id).indexOf(tag.id) == -1
+      );
+    });
+    return tagsOthers;
   }
 }
