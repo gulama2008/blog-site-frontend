@@ -8,6 +8,7 @@ import link from "../../assets/link.png";
 import statistics from "../../assets/statistics.png"
 import { useContext, useState, useEffect } from "react";
 import { BlogContext } from "../../context/BlogContextProvider";
+import { Link } from "react-router-dom";
 const SideBarContainer = () => {
   const sideBarItemList = [
     
@@ -26,14 +27,13 @@ useEffect(() => {
     setShowModalClass(`${containerClass}`);
   }
 }, [showTagModal]);
+  
+  
   return (
     <div className={showModalClass}>
       <div className={styles.head_container}>
         <div className={styles.title}>MY DASHBOARD</div>
-        <div className={styles.link}>
-          <img src={link} alt="" className={ styles.link_icon} />
-          <div className={styles.link_content}>Go To My Blog</div>
-        </div>
+        <Link to={"new"}>New Article</Link>
       </div>
       <div className={styles.content}>
         {sideBarItemList.map((item, index) => {
@@ -47,6 +47,12 @@ useEffect(() => {
             />
           );
         })}
+      </div>
+      <div>
+        <div className={styles.link}>
+          <img src={link} alt="" className={styles.link_icon} />
+          <div className={styles.link_content}>Go To My Blog</div>
+        </div>
       </div>
     </div>
   );

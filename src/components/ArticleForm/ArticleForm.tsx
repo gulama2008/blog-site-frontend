@@ -1,21 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { BlogContext, BlogItem } from "../../context/BlogContextProvider";
-import styles from "./EditBlogContainer.module.scss";
-const EditBlogContainer = () => {
-  const { data } = useContext(BlogContext);
-  const { id } = useParams();
-  const [currentBlogItem, setCurrentBlogItem] = useState<BlogItem>();
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styles from './Article.module.scss'
+
+const ArticleForm = () => {
   const [title, setTitle] = useState<string>();
   const [content, setContent] = useState<string>();
-  useEffect(() => {
-    if (id) {
-      const item = data.find((e: BlogItem) => e.id == parseInt(id));
-      setCurrentBlogItem(item);
-      setTitle(item.title);
-      setContent(item.content);
-    }
-  }, [id]);
   const navigate = useNavigate();
   const handleChangeTitle = (e: any) => {
     setTitle(e.target.value);
@@ -49,6 +38,6 @@ const EditBlogContainer = () => {
       </div>
     </form>
   );
-};
+}
 
-export default EditBlogContainer;
+export default ArticleForm

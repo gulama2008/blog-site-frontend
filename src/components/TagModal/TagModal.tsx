@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { BlogContext, TagItem } from "../../context/BlogContextProvider";
 import TagListItem from "../TagListItem/TagListItem";
 import { ArticleService } from "../../services/article-service";
-import styles from "./TagModal.module.scss"
+import styles from "./TagModal.module.scss";
 import { Utils } from "../../services/utils";
 import TagOfArticle from "../TagOfArticle/TagOfArticle";
 import TagOthers from "../TagOthers/TagOthers";
@@ -25,11 +25,32 @@ const TagModal = () => {
   const handleClose = () => {
     setShowTagModal(false);
   };
+
+  const handleEditTags = () => {
+    const tagsArr = tagsOfArticle.map((tag: TagItem) => {
+      const { articles, ...rest } = tag;
+      return rest;
+    });
+    const data = { tags: tagsArr };
+    ArticleService.updateTagsByArticleId(currentArticleId, data)
+      .then((data) => console.log(data))
+      .catch((e) => console.error(e));
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.tags}>
         {tagsOfArticle.map((tag: TagItem) => {
-          return <TagOfArticle tag={tag} tagsOfArticle={tagsOfArticle} setTagsOfArticle={setTagsOfArticle} tagsOthers={tagsOthers} setTagsOthers={setTagsOthers} key={tag.id} />;
+          return (
+            <TagOfArticle
+              tag={tag}
+              tagsOfArticle={tagsOfArticle}
+              setTagsOfArticle={setTagsOfArticle}
+              tagsOthers={tagsOthers}
+              setTagsOthers={setTagsOthers}
+              key={tag.id}
+            />
+          );
         })}
       </div>
       <div className={styles.tags_other}>
@@ -48,7 +69,7 @@ const TagModal = () => {
       </div>
       <div className={styles.btn}>
         <button onClick={handleClose}>Cancel</button>
-        <button>Apply</button>
+        <button onClick={handleEditTags}>Apply</button>
       </div>
     </div>
   );
