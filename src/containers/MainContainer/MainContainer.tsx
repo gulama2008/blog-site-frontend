@@ -4,8 +4,8 @@ import BlogListContainer from "../BlogListContainer/BlogListContainer";
 import CommentsContainer from "../CommentsContainer/CommentsContainer";
 import TagsContainer from "../TagsContainer/TagsContainer";
 import StatisticsContainer from "../StatisticsContainer/StatisticsContainer";
-import EditBlogContainer from "../EditArticleContainer/EditArticleContainer";
 import NewArticleContainer from "../NewArticleContainer/NewArticleContainer";
+import EditArticleContainer from "../EditArticleContainer/EditArticleContainer";
 const MainContainer = () => {
 
   return (
@@ -13,7 +13,7 @@ const MainContainer = () => {
       <Routes>
         <Route path="/new" element={<NewArticleContainer />} />
         <Route path="/blogs" element={<BlogListContainer />} />
-        <Route path="/blogs/:id" element={<EditBlogContainer/>} />
+        <Route path="/blogs/:id" element={<EditArticleContainer/>} />
         <Route path="/comments" element={<CommentsContainer />} />
         <Route path="/tags" element={<TagsContainer />} />
         <Route path="/statistics" element={<StatisticsContainer />} />

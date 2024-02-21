@@ -1,16 +1,23 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from './Article.module.scss'
-
-const ArticleForm = () => {
-  const [title, setTitle] = useState<string>();
-  const [content, setContent] = useState<string>();
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "./Article.module.scss";
+export interface ArticleFormProps {
+  title: string;
+  content: string;
+}
+const ArticleForm = ({ title, content }: ArticleFormProps) => {
+  const [formTitle, setFormTitle] = useState<string>(title);
+  const [formContent, setFormContent] = useState<string>(content);
+  useEffect(() => {
+    setFormTitle(title);
+    setFormContent(content);
+  }, [title, content]);
   const navigate = useNavigate();
   const handleChangeTitle = (e: any) => {
-    setTitle(e.target.value);
+    setFormTitle(e.target.value);
   };
   const handleChangeContent = (e: any) => {
-    setContent(e.target.value);
+    setFormContent(e.target.value);
   };
   const handleCancel = () => {
     navigate("/admin/blogs", { replace: true });
@@ -19,7 +26,7 @@ const ArticleForm = () => {
     <form className={styles.form}>
       <input
         type="text"
-        value={title}
+        value={formTitle}
         onChange={handleChangeTitle}
         className={styles.title}
       />
@@ -28,7 +35,7 @@ const ArticleForm = () => {
         id=""
         cols={30}
         rows={30}
-        value={content}
+        value={formContent}
         onChange={handleChangeContent}
         className={styles.content}
       ></textarea>
@@ -38,6 +45,6 @@ const ArticleForm = () => {
       </div>
     </form>
   );
-}
+};
 
-export default ArticleForm
+export default ArticleForm;
