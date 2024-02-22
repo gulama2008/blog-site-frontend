@@ -7,7 +7,7 @@ const BlogHeaderContainer = () => {
     <div className={styles.container}>
       <div className={styles.inner_container}>
         <BlogHeaderTitle />
-        <BlogHeaderSearchBar />
+        
       </div>
     </div>
   );

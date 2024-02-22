@@ -1,18 +1,52 @@
-import { ArticleItem } from '../../../context/BlogContextProvider'
-import styles from './BlogMainArticle.module.scss'
-export interface BlogMainArticle { 
-  article: ArticleItem,
-  index:number
+import { useContext, useEffect, useState } from "react";
+import {
+  ArticleItem,
+  BlogContext,
+  TagItem,
+} from "../../../context/BlogContextProvider";
+import styles from "./BlogMainArticle.module.scss";
+import { ArticleService } from "../../../services/article-service";
+export interface BlogMainArticle {
+  article: ArticleItem;
+  index: number;
 }
-const BlogMainArticle = ({article,index}:BlogMainArticle) => {
+const BlogMainArticle = ({ article, index }: BlogMainArticle) => {
+  const {} = useContext(BlogContext);
+  const [tags, setTags] = useState<TagItem[]>([]);
+  useEffect(() => {
+    ArticleService.getAllTagsByArticleId(index)
+      .then((data) => setTags(data))
+      .catch((e) => console.error(e));
+  }, []);
   return (
     <div className={styles.container}>
-      <h3>{article.title}</h3>
-      <div>{article.content}</div>
-      <div>Published At {article.publishDate}</div>
-      <div>{ article.comments.length} comments</div>
+      <h2 className={styles.title}>{article.title}</h2>
+      <div className={styles.content}>{article.content}</div>
+      <div className={styles.info_container}>
+        <div>
+          <span className={styles.info}>Published At</span>{" "}
+          {article.publishDate}
+        </div>
+        {article.comments.length == 1 || article.comments.length == 0 ? (
+          <div>
+            <span className={styles.info}>comment:</span>
+            {article.comments.length}
+          </div>
+        ) : (
+          <div>
+            <span className={styles.info}>comments:</span>
+            {article.comments.length}
+          </div>
+        )}
+        <div>
+          <span className={styles.info}>Tags:</span>{" "}
+          {tags.map((tag: TagItem) => {
+            return <span className={styles.tag}>{tag.name}</span>;
+          })}
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default BlogMainArticle
+export default BlogMainArticle;
