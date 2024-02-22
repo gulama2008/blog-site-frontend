@@ -1,10 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { ArticleItem, BlogContext, BlogItem } from "../../context/BlogContextProvider";
+import {
+  ArticleItem,
+  BlogContext,
+  BlogItem,
+} from "../../context/BlogContextProvider";
 import styles from "./EditArticleContainer.module.scss";
 import ArticleForm from "../../components/ArticleForm/ArticleForm";
+import { ArticleService, UpdateArticle } from "../../services/article-service";
 const EditArticleContainer = () => {
-  const { data } = useContext(BlogContext);
+  const { data,setDataChange ,dataChange} = useContext(BlogContext);
   const { id } = useParams();
   const [currentArticleItem, setCurrentArticleItem] = useState<ArticleItem>();
   const [title, setTitle] = useState<string>("");
@@ -12,35 +17,26 @@ const EditArticleContainer = () => {
   useEffect(() => {
     if (id) {
       const item = data.find((e: ArticleItem) => e.id == parseInt(id));
+      console.log(item);
+      
       setCurrentArticleItem(item);
       setTitle(item.title);
       setContent(item.content);
     }
   }, [id]);
-  
+
+  // const saveAPI = (id:number,data:UpdateArticle,dataChange:any) => {
+    
+  //   ArticleService.updateArticleById(id, data)
+  //     .then(() => {
+  //       let change = dataChange;
+  //       setDataChange(change++);
+  //     })
+  //     .catch((e) => console.error(e));
+  // };
+
   return (
-    // <form className={styles.form}>
-    //   <input
-    //     type="text"
-    //     value={title}
-    //     onChange={handleChangeTitle}
-    //     className={styles.title}
-    //   />
-    //   <textarea
-    //     name=""
-    //     id=""
-    //     cols={30}
-    //     rows={30}
-    //     value={content}
-    //     onChange={handleChangeContent}
-    //     className={styles.content}
-    //   ></textarea>
-    //   <div>
-    //     <button onClick={handleCancel}>Cancel</button>
-    //     <button>Save</button>
-    //   </div>
-    // </form>
-    <ArticleForm title={ title} content={content} />
+    <ArticleForm title={title} content={content}  />
   );
 };
 

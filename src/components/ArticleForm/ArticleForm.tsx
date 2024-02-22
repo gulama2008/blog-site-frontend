@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./Article.module.scss";
+import { ArticleService } from "../../services/article-service";
+import { BlogContext } from "../../context/BlogContextProvider";
+import { Utils } from "../../services/utils";
 export interface ArticleFormProps {
   title: string;
   content: string;
 }
 const ArticleForm = ({ title, content }: ArticleFormProps) => {
+  const { setDataChange, dataChange } = useContext(BlogContext);
   const [formTitle, setFormTitle] = useState<string>(title);
   const [formContent, setFormContent] = useState<string>(content);
+  const { id } = useParams();
   useEffect(() => {
     setFormTitle(title);
     setFormContent(content);
@@ -21,6 +26,38 @@ const ArticleForm = ({ title, content }: ArticleFormProps) => {
   };
   const handleCancel = () => {
     navigate("/admin/blogs", { replace: true });
+  };
+
+  const handleSave = (e: any) => {
+    e.preventDefault();
+
+    if (id) {
+      const data = {
+        title: formTitle,
+        content: formContent,
+      };
+      ArticleService.updateArticleById(parseInt(id), data)
+        .then(() => {
+          let change = dataChange;
+            setDataChange(change - 1);
+            navigate("/admin/blogs", { replace: true });
+        })
+        .catch((e) => console.error(e));
+    } else {
+      const date = Utils.getFormattedCurrentDate();
+      const data = {
+        title: formTitle,
+        content: formContent,
+        publishDate: date,
+      };
+      ArticleService.createArticle(data)
+        .then(() => {
+          let change = dataChange;
+            setDataChange(change + 1);
+            navigate("/admin/blogs", { replace: true });
+        })
+        .catch((e) => console.error(e));
+    }
   };
   return (
     <form className={styles.form}>
@@ -41,7 +78,7 @@ const ArticleForm = ({ title, content }: ArticleFormProps) => {
       ></textarea>
       <div>
         <button onClick={handleCancel}>Cancel</button>
-        <button>Save</button>
+        <button onClick={handleSave}>Save</button>
       </div>
     </form>
   );
