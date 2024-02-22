@@ -1,9 +1,8 @@
 import styles from "./NewArticleContainer.module.scss";
-import ArticleForm from "../../components/ArticleForm/ArticleForm";
+import ArticleForm from "../../../components/ArticleForm/ArticleForm";
 
 const NewArticleContainer = () => {
-
-  const handleSave = () => { }
+  const handleSave = () => {};
   return (
     <div>
       <ArticleForm title="" content="" />

@@ -1,12 +1,12 @@
 import styles from "./StatisticsContainer.module.scss";
-import article from "../../assets/article.png";
+import article from "../../../assets/article.png";
 import { useCallback, useContext, useEffect, useState } from "react";
-import { BlogContext } from "../../context/BlogContextProvider";
-import comment from "../../assets/comment_stats.png";
-import visitor from "../../assets/visitor.png";
-import view from "../../assets/view.png";
-import divider from "../../assets/divider.png";
-import { Utils } from "../../services/utils";
+import { BlogContext } from "../../../context/BlogContextProvider";
+import comment from "../../../assets/comment_stats.png";
+import visitor from "../../../assets/visitor.png";
+import view from "../../../assets/view.png";
+import divider from "../../../assets/divider.png";
+import { Utils } from "../../../services/utils";
 import { Chart } from "react-google-charts";
 export const options = {
   title: "My Tags",
@@ -15,7 +15,7 @@ const StatisticsContainer = () => {
   const { data, comments, views, tags } = useContext(BlogContext);
   const [tagCount, setTagCount] = useState<any>();
   console.log(views);
-  
+
   useEffect(() => {
     const tagCount = Utils.countTags(tags);
     setTagCount(tagCount);

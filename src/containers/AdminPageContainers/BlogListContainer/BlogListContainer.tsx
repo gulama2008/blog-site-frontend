@@ -1,16 +1,19 @@
 import { useContext, useEffect, useState } from "react";
-import { ArticleItem, BlogContext, BlogItem } from "../../context/BlogContextProvider";
-import BlogListItem from "../../components/BlogListItem/BlogListItem";
+import {
+  ArticleItem,
+  BlogContext,
+  BlogItem,
+} from "../../../context/BlogContextProvider";
+import BlogListItem from "../../../components/BlogListItem/BlogListItem";
 import styles from "./BlogListContainer.module.scss";
 import { useForm } from "react-hook-form";
-import TagModal from "../../components/TagModal/TagModal";
+import TagModal from "../../../components/TagModal/TagModal";
 export interface FormData {
   fromDate: string;
   toDate: string;
 }
 const BlogListContainer = () => {
-  const { data, setData, showTagModal } =
-    useContext(BlogContext);
+  const { data, setData, showTagModal } = useContext(BlogContext);
   const [showModalClass, setShowModalClass] = useState<string>("");
   // const containerClass = styles.container;
   useEffect(() => {
@@ -33,7 +36,7 @@ const BlogListContainer = () => {
     },
     mode: "all",
   });
-  
+
   const formSubmit = (formData: any) => {
     const filteredData = data.filter((item: BlogItem) => {
       return (
@@ -46,7 +49,7 @@ const BlogListContainer = () => {
   const handleClear = (e: any) => {
     e.preventDefault();
     reset();
-    setData(allData); 
+    setData(allData);
   };
   return (
     <div className={styles.container}>

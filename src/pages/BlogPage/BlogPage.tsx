@@ -1,9 +1,14 @@
-import React from 'react'
+import BlogHeaderContainer from "../../containers/BlogPageContainers/BlogHeaderContainer/BlogHeaderContainer";
+import styles from "./BlogPage.module.scss";
+import BlogMainContainer from "../../containers/BlogPageContainers/BlogMainContainer/BlogMainContainer";
 
 const BlogPage = () => {
   return (
-    <div>BlogPage</div>
-  )
-}
+    <div className={styles.container}>
+      <BlogHeaderContainer />
+      <BlogMainContainer />
+    </div>
+  );
+};
 
-export default BlogPage
+export default BlogPage;

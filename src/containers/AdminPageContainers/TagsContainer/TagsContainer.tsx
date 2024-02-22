@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import styles from "./TagsContainer.module.scss";
-import { BlogContext, TagItem } from "../../context/BlogContextProvider";
-import TagListItem from "../../components/TagListItem/TagListItem";
-import Button from "../../components/Button/Button";
+import { BlogContext, TagItem } from "../../../context/BlogContextProvider";
+import TagListItem from "../../../components/TagListItem/TagListItem";
+import Button from "../../../components/Button/Button";
 
 const TagsContainer = () => {
   const { tags } = useContext(BlogContext);
@@ -11,7 +11,7 @@ const TagsContainer = () => {
       <div className={styles.header}>
         <div className={styles.title}>All Tags</div>
         <div>
-          <Button content="+ Add Tag"/>
+          <Button content="+ Add Tag" />
         </div>
       </div>
       <div className={styles.tags}>

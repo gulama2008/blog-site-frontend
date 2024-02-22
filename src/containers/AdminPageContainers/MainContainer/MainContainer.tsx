@@ -7,13 +7,12 @@ import StatisticsContainer from "../StatisticsContainer/StatisticsContainer";
 import NewArticleContainer from "../NewArticleContainer/NewArticleContainer";
 import EditArticleContainer from "../EditArticleContainer/EditArticleContainer";
 const MainContainer = () => {
-
   return (
     <div className={styles.container}>
       <Routes>
         <Route path="/new" element={<NewArticleContainer />} />
         <Route path="/blogs" element={<BlogListContainer />} />
-        <Route path="/blogs/:id" element={<EditArticleContainer/>} />
+        <Route path="/blogs/:id" element={<EditArticleContainer />} />
         <Route path="/comments" element={<CommentsContainer />} />
         <Route path="/tags" element={<TagsContainer />} />
         <Route path="/statistics" element={<StatisticsContainer />} />

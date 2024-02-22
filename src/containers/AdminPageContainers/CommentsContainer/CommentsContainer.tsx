@@ -1,27 +1,30 @@
-import { useContext, useEffect, useState } from 'react'
-import { BlogContext, CommentItem } from '../../context/BlogContextProvider';
-import CommentListItem from '../../components/CommentListItem/CommentListItem';
-import styles from "./CommentsContainer.module.scss"
+import { useContext, useEffect, useState } from "react";
+import { BlogContext, CommentItem } from "../../../context/BlogContextProvider";
+import CommentListItem from "../../../components/CommentListItem/CommentListItem";
+import styles from "./CommentsContainer.module.scss";
 const CommentsContainer = () => {
   const { comments } = useContext(BlogContext);
-  const [commentsDisplay, setCommentsDisplay] = useState<CommentItem[]>(comments);
-  useEffect(() => { setCommentsDisplay(comments)},[comments])
-  
-  const handleChange = (e:any) => { 
+  const [commentsDisplay, setCommentsDisplay] =
+    useState<CommentItem[]>(comments);
+  useEffect(() => {
+    setCommentsDisplay(comments);
+  }, [comments]);
+
+  const handleChange = (e: any) => {
     if (e.target.value == "") {
       setCommentsDisplay(comments);
     } else if (e.target.value == "true") {
       const blockedComments = comments.filter((comment: CommentItem) => {
-        return comment.blocked
-      })
+        return comment.blocked;
+      });
       setCommentsDisplay(blockedComments);
-    } else { 
+    } else {
       const unblockedComments = comments.filter((comment: CommentItem) => {
         return !comment.blocked;
       });
       setCommentsDisplay(unblockedComments);
     }
-  }
+  };
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -52,6 +55,6 @@ const CommentsContainer = () => {
       </div>
     </div>
   );
-}
+};
 
-export default CommentsContainer
+export default CommentsContainer;
