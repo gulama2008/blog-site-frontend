@@ -5,8 +5,10 @@ import BlogHeaderSearchBar from "../../../components/BlogPageComponents/BlogHead
 const BlogHeaderContainer = () => {
   return (
     <div className={styles.container}>
-      <BlogHeaderTitle />
-      <BlogHeaderSearchBar />
+      <div className={styles.inner_container}>
+        <BlogHeaderTitle />
+        <BlogHeaderSearchBar />
+      </div>
     </div>
   );
 };
