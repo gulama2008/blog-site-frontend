@@ -76,4 +76,9 @@ export class ArticleService {
       throw new Error("Could not update");
     }
   }
+
+  public static async getArticlesGroupByDate(): Promise<any> {
+    const response = await fetch(`${url}/articles/date`);
+    return await response.json();
+  }
 }

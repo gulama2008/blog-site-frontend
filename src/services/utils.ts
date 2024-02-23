@@ -102,4 +102,33 @@ export class Utils {
     const today = new Date();
     return formatDate(today);
   }
+
+  public static getFormattedGroupedArticles(data: []) { 
+    let monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const result = data.map((e:any) => { 
+      const formatted = [];
+      const dateArr = e[1].split("-")
+      const month = monthNames[parseInt(dateArr[1])-1];
+      const newDate=`${month} ${dateArr[0]}`
+      formatted.push(newDate);
+      formatted.push(e[0]);
+      return formatted;
+    })
+    console.log(result);
+    
+    return result;
+  }
 }

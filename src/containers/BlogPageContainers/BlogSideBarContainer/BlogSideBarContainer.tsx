@@ -1,12 +1,14 @@
-import BlogHeaderSearchBar from '../../../components/BlogPageComponents/BlogHeaderSearchBar/BlogHeaderSearchBar';
-import styles from './BlogSideBarContainer.module.scss'
+import BlogArchive from "../../../components/BlogPageComponents/BlogArchive/BlogArchive";
+import BlogSearchBar from "../../../components/BlogPageComponents/BlogSearchBar/BlogSearchBar";
+import styles from "./BlogSideBarContainer.module.scss";
 
 const BlogSideBarContainer = () => {
   return (
     <div className={styles.container}>
-      <BlogHeaderSearchBar />
+      <BlogSearchBar />
+      <BlogArchive/>
     </div>
   );
-}
+};
 
-export default BlogSideBarContainer
+export default BlogSideBarContainer;
