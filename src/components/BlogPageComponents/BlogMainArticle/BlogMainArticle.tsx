@@ -21,9 +21,9 @@ const BlogMainArticle = ({ article, index }: BlogMainArticle) => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>{article.title}</h2>
-      <div className={styles.content_container}>
+      {/* <div className={styles.content_container}> */}
         <div className={styles.content}>{article.content}</div>
-      </div>
+      {/* </div> */}
       <div className={styles.info_container}>
         <div>
           <span className={styles.info}>Published At</span>{" "}

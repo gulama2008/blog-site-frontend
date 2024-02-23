@@ -91,8 +91,8 @@ export class Utils {
     return tagsOthers;
   }
 
-  public static getFormattedCurrentDate() { 
-    let formatDate = (date:Date) => {
+  public static getFormattedCurrentDate() {
+    let formatDate = (date: Date) => {
       const year = date.getFullYear();
       const month = String(date.getMonth() + 1).padStart(2, "0");
       const day = String(date.getDate()).padStart(2, "0");
@@ -103,7 +103,7 @@ export class Utils {
     return formatDate(today);
   }
 
-  public static getFormattedGroupedArticles(data: []) { 
+  public static getFormattedGroupedArticles(data: []) {
     let monthNames = [
       "January",
       "February",
@@ -118,17 +118,48 @@ export class Utils {
       "November",
       "December",
     ];
-    const result = data.map((e:any) => { 
+    const result = data.map((e: any) => {
       const formatted = [];
-      const dateArr = e[1].split("-")
-      const month = monthNames[parseInt(dateArr[1])-1];
-      const newDate=`${month} ${dateArr[0]}`
+      const dateArr = e[1].split("-");
+      const month = monthNames[parseInt(dateArr[1]) - 1];
+      const newDate = `${month} ${dateArr[0]}`;
       formatted.push(newDate);
       formatted.push(e[0]);
       return formatted;
-    })
+    });
     console.log(result);
-    
+
     return result;
+  }
+
+  public static convertDateToString(data: Date) {
+    const year = data.getFullYear();
+    const month = String(data.getMonth() + 1).padStart(2, "0");
+    const day = String(data.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  public static getFirstDayOfMonth(date: string) {
+    const fullDate = `${date}-01`;
+    const firstDay = new Date(fullDate);
+    const firstDayStr = this.convertDateToString(firstDay);
+    return firstDayStr;
+  }
+
+  public static getLastDayOfMonth(date: string) {
+    const fullDate = `${date}-01`;
+    const d = new Date(fullDate);
+    const lastDay = new Date(d.getFullYear(), d.getMonth() + 1, 0);
+    const lastDayStr = this.convertDateToString(lastDay);
+    return lastDayStr;
+  }
+
+  public static sortArticlesByPublishDate(articles:ArticleItem[]):ArticleItem[] { 
+    articles.sort((a: ArticleItem, b: ArticleItem) => { 
+      const dateA:any = new Date(a.publishDate);
+      const dateB:any = new Date(b.publishDate);
+      return dateB - dateA;
+    });
+    return articles;
   }
 }

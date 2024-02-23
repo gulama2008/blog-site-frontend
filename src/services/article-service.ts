@@ -1,19 +1,24 @@
 import { ArticleItem, TagItem } from "../context/BlogContextProvider";
 
 export const url = "http://localhost:8080";
- 
+
 export interface UpdateTags {
   tags: TagItem[];
 }
 
-export interface CreateArticle { 
-  title: string,
-  content: string,
-  publishDate:string
+export interface CreateArticle {
+  title: string;
+  content: string;
+  publishDate: string;
 }
 export interface UpdateArticle {
   title: string;
-  content:string
+  content: string;
+}
+
+export interface GetArticlesByDateRange {
+  startDate: string;
+  endDate: string;
 }
 export class ArticleService {
   public static async get(): Promise<ArticleItem[]> {
@@ -78,7 +83,20 @@ export class ArticleService {
   }
 
   public static async getArticlesGroupByDate(): Promise<any> {
-    const response = await fetch(`${url}/articles/date`);
+    const response = await fetch(`${url}/articles/group`);
+    return await response.json();
+  }
+
+  public static async getAllArticlesByDateRange(
+    startDate: string,
+    endDate: string
+  ): Promise<ArticleItem[]> {
+    var params = {
+      startDate: startDate,
+      endDate: endDate,
+    };
+    const queryString = new URLSearchParams(params).toString();
+    const response = await fetch(`${url}/articles/date?${queryString}`);
     return await response.json();
   }
 }

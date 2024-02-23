@@ -1,3 +1,9 @@
-.container{
-    font-size: 13px;
+.container {
+  font-size: 13px;
+}
+
+.content:hover {
+  cursor: pointer;
+  color: #fe331c;
+  text-decoration: underline;
 }

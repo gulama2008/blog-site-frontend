@@ -17,12 +17,12 @@
 }
 
 .content {
+  width: 100%;
   color: black;
   margin-bottom: 20px;
-//   display:-webkit-box;
-// white-space: nowrap; 
-//   -webkit-box-orient: vertical;
-//   -webkit-line-clamp: 3;
+  // display:-webkit-box;
+  // -webkit-box-orient: vertical;
+  // -webkit-line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
   
