@@ -11,7 +11,7 @@ import { BlogContext } from "../../../context/BlogContextProvider";
 import { Link } from "react-router-dom";
 const SideBarContainer = () => {
   const sideBarItemList = [
-    ["Article Management", articleList, "blogs"],
+    ["Article Management", articleList, "articles"],
     ["Comment Management", comment, "comments"],
     ["Categories/Tags", tag, "tags"],
     ["Statistics", statistics, "statistics"],

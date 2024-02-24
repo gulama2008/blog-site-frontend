@@ -1,0 +1,34 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: black;
+    font-weight: 700;
+}
+
+.tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag{
+    font-size: 13px;
+}
+
+.tag:hover {
+  cursor: pointer;
+  color: #fe331c;
+  text-decoration: underline;
+}
+
+.icon{
+    height: 20px;
+    width: 20px;
+}

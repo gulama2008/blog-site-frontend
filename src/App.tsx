@@ -14,7 +14,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/admin/*" element={<AdminPage />} />
-          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/*" element={<BlogPage />} />
         </Routes>
       </BrowserRouter>
     </BlogContextProvider>

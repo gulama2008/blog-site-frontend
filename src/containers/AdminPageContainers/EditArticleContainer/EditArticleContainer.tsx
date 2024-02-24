@@ -7,10 +7,7 @@ import {
 } from "../../../context/BlogContextProvider";
 import styles from "./EditArticleContainer.module.scss";
 import ArticleForm from "../../../components/ArticleForm/ArticleForm";
-import {
-  ArticleService,
-  UpdateArticle,
-} from "../../../services/article-service";
+
 const EditArticleContainer = () => {
   const { data, setDataChange, dataChange } = useContext(BlogContext);
   const { id } = useParams();
@@ -20,23 +17,11 @@ const EditArticleContainer = () => {
   useEffect(() => {
     if (id) {
       const item = data.find((e: ArticleItem) => e.id == parseInt(id));
-      console.log(item);
-
       setCurrentArticleItem(item);
       setTitle(item.title);
       setContent(item.content);
     }
   }, [id]);
-
-  // const saveAPI = (id:number,data:UpdateArticle,dataChange:any) => {
-
-  //   ArticleService.updateArticleById(id, data)
-  //     .then(() => {
-  //       let change = dataChange;
-  //       setDataChange(change++);
-  //     })
-  //     .catch((e) => console.error(e));
-  // };
 
   return <ArticleForm title={title} content={content} />;
 };

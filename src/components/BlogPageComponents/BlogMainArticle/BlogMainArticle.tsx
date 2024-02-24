@@ -6,6 +6,7 @@ import {
 } from "../../../context/BlogContextProvider";
 import styles from "./BlogMainArticle.module.scss";
 import { ArticleService } from "../../../services/article-service";
+import { Link } from "react-router-dom";
 export interface BlogMainArticle {
   article: ArticleItem;
   index: number;
@@ -20,9 +21,11 @@ const BlogMainArticle = ({ article, index }: BlogMainArticle) => {
   }, []);
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>{article.title}</h2>
+      <Link to={index.toString()}>
+        <h2 className={styles.title}>{article.title}</h2>
+      </Link>
       {/* <div className={styles.content_container}> */}
-        <div className={styles.content}>{article.content}</div>
+      <div className={styles.content}>{article.content}</div>
       {/* </div> */}
       <div className={styles.info_container}>
         <div>
@@ -43,7 +46,11 @@ const BlogMainArticle = ({ article, index }: BlogMainArticle) => {
         <div>
           <span className={styles.info}>Tags:</span>{" "}
           {tags.map((tag: TagItem) => {
-            return <span className={styles.tag} key={tag.id}>{tag.name}</span>;
+            return (
+              <span className={styles.tag} key={tag.id}>
+                {tag.name}
+              </span>
+            );
           })}
         </div>
       </div>

@@ -91,12 +91,23 @@ export class ArticleService {
     startDate: string,
     endDate: string
   ): Promise<ArticleItem[]> {
-    var params = {
+    const params = {
       startDate: startDate,
       endDate: endDate,
     };
     const queryString = new URLSearchParams(params).toString();
     const response = await fetch(`${url}/articles/date?${queryString}`);
+    return await response.json();
+  }
+
+  public static async getAllArticlesByKeyword(
+    keyword:string
+  ): Promise<ArticleItem[]> {
+    const params = {
+      keyword: keyword,
+    };
+    const queryString = new URLSearchParams(params).toString();
+    const response = await fetch(`${url}/articles/search?${queryString}`);
     return await response.json();
   }
 }

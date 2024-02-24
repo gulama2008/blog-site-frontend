@@ -3,6 +3,7 @@ import { ArticleService } from "../../../services/article-service";
 import { Utils } from "../../../services/utils";
 import styles from "./BlogArchiveItem.module.scss";
 import { BlogContext } from "../../../context/BlogContextProvider";
+import { useNavigate } from "react-router-dom";
 export interface BlogArchiveItemProps {
   originalData: any;
   formattedData: any;
@@ -12,16 +13,20 @@ const BlogArchiveItem = ({
   formattedData,
 }: BlogArchiveItemProps) => {
   const { setData } = useContext(BlogContext);
+  const navigate = useNavigate();
+
   const handleClick = () => {
+    navigate("/blog", { replace: true });
     const startDate = Utils.getFirstDayOfMonth(originalData[1]);
     const endDate = Utils.getLastDayOfMonth(originalData[1]);
     ArticleService.getAllArticlesByDateRange(startDate, endDate)
-        .then((data) => {
-            const sortedData=Utils.sortArticlesByPublishDate(data);
-            setData(sortedData)
-        })
+      .then((data) => {
+        const sortedData = Utils.sortArticlesByPublishDate(data);
+        setData(sortedData);
+      })
       .catch((e) => console.error(e));
   };
+    
   return (
     <div className={styles.container} onClick={handleClick}>
       <span className={styles.content}>

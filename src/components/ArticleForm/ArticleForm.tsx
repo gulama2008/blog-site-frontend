@@ -25,7 +25,7 @@ const ArticleForm = ({ title, content }: ArticleFormProps) => {
     setFormContent(e.target.value);
   };
   const handleCancel = () => {
-    navigate("/admin/blogs", { replace: true });
+    navigate("/admin/articles", { replace: true });
   };
 
   const handleSave = (e: any) => {

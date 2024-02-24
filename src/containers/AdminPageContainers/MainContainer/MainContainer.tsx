@@ -11,8 +11,8 @@ const MainContainer = () => {
     <div className={styles.container}>
       <Routes>
         <Route path="/new" element={<NewArticleContainer />} />
-        <Route path="/blogs" element={<BlogListContainer />} />
-        <Route path="/blogs/:id" element={<EditArticleContainer />} />
+        <Route path="/articles" element={<BlogListContainer />} />
+        <Route path="/articles/:id" element={<EditArticleContainer />} />
         <Route path="/comments" element={<CommentsContainer />} />
         <Route path="/tags" element={<TagsContainer />} />
         <Route path="/statistics" element={<StatisticsContainer />} />

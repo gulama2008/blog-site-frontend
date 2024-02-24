@@ -1,11 +1,19 @@
-.container{
-    // background-color: #fef2f1;
-    background-color:#ffeed0;
-    min-height: 100%;
-    padding: 0px 200px 20px 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    // color: #715442;
-    color: #9d3a0b;
+.container {
+  // background-color: #fef2f1;
+  background-color: #ffeed0;
+  min-height: 100%;
+  padding: 0px 200px 20px 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  // color: #715442;
+  color: #9d3a0b;
+}
+
+.main_container {
+  background-color: #fefaee;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 0px 20px 20px 20px;
 }

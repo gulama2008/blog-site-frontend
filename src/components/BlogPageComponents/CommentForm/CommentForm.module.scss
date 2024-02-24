@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    flex-direction:column;
+    gap: 10px;
+
+}
+
+.text{
+    border: none;
+    outline: none;
+    padding: 10px;
+}
+
+.btn{
+    align-self: flex-end;
+    color: white;
+    background-color: #9d3a0b;
+}

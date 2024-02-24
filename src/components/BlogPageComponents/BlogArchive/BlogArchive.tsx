@@ -4,12 +4,14 @@ import { ArticleService } from "../../../services/article-service";
 import { Utils } from "../../../services/utils";
 import BlogArchiveItem from "../BlogArchiveItem/BlogArchiveItem";
 import { ArticleItem, BlogContext } from "../../../context/BlogContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const BlogArchive = () => {
   const { setData } = useContext(BlogContext);
   const [originalGroupedData, setOriginalGroupedData] = useState<any>([]);
   const [groupedArticlesData, setGroupedArticlesData] = useState<any>([]);
-  const [allArticles,setAllArticles]=useState<ArticleItem[]>([])
+  const [allArticles, setAllArticles] = useState<ArticleItem[]>([]);
+  const navigate = useNavigate();
   useEffect(() => {
     ArticleService.getArticlesGroupByDate()
       .then((data) => {
@@ -18,10 +20,16 @@ const BlogArchive = () => {
         setGroupedArticlesData(formattedData);
       })
       .catch((e) => console.error(e));
-    ArticleService.get().then(data=>setAllArticles(data)).catch(e=>console.error(e)
-    )
+    ArticleService.get()
+      .then((data) => setAllArticles(data))
+      .catch((e) => console.error(e));
   }, []);
-  
+
+  const handleClick = () => {
+    navigate("/blog", { replace: true });
+    setData(allArticles);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.title}>Blog Archive</div>
@@ -35,7 +43,7 @@ const BlogArchive = () => {
           );
         })}
       </div>
-      <div className={styles.all_container} onClick={() => setData(allArticles)}>
+      <div className={styles.all_container} onClick={handleClick}>
         <span className={styles.all}>All Articles ({allArticles.length})</span>
       </div>
     </div>
