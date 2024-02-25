@@ -16,16 +16,16 @@ const SideBarContainer = () => {
     ["Categories/Tags", tag, "tags"],
     ["Statistics", statistics, "statistics"],
   ];
-  const { showTagModal } = useContext(BlogContext);
+  const { showTagModal,showDeleteModal } = useContext(BlogContext);
   const [showModalClass, setShowModalClass] = useState<string>("");
   const containerClass = styles.container;
   useEffect(() => {
-    if (showTagModal) {
+    if (showTagModal||showDeleteModal) {
       setShowModalClass(`${containerClass} ${styles.disabled}`);
     } else {
       setShowModalClass(`${containerClass}`);
     }
-  }, [showTagModal]);
+  }, [showTagModal,showDeleteModal]);
 
   return (
     <div className={showModalClass}>

@@ -6,6 +6,8 @@ import styles from "./TagModal.module.scss";
 import { Utils } from "../../services/utils";
 import TagOfArticle from "../TagOfArticle/TagOfArticle";
 import TagOthers from "../TagOthers/TagOthers";
+import Button from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 
 const TagModal = () => {
   const { tags, setShowTagModal, currentArticleId } = useContext(BlogContext);
@@ -29,6 +31,7 @@ const TagModal = () => {
   const handleEditTags = () => {
     const tagsArr = tagsOfArticle.map((tag: TagItem) => {
       const { articles, ...rest } = tag;
+      setShowTagModal(false);
       return rest;
     });
     const data = { tags: tagsArr };
@@ -68,8 +71,15 @@ const TagModal = () => {
         })}
       </div>
       <div className={styles.btn}>
-        <button onClick={handleClose}>Cancel</button>
-        <button onClick={handleEditTags}>Apply</button>
+        <Button
+          content="Cancel"
+          onClick={handleClose}
+          backgroundColor="#f1f2f3"
+          color="#7a808d"
+        />
+        <Button content="Apply" onClick={handleEditTags} />
+        {/* <button onClick={handleClose}>Cancel</button>
+        <button onClick={handleEditTags}>Apply</button> */}
       </div>
     </div>
   );

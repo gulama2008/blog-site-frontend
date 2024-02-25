@@ -101,7 +101,7 @@ export class ArticleService {
   }
 
   public static async getAllArticlesByKeyword(
-    keyword:string
+    keyword: string
   ): Promise<ArticleItem[]> {
     const params = {
       keyword: keyword,
@@ -109,5 +109,14 @@ export class ArticleService {
     const queryString = new URLSearchParams(params).toString();
     const response = await fetch(`${url}/articles/search?${queryString}`);
     return await response.json();
+  }
+
+  public static async deleteArticle(id: number) {
+    const response = await fetch(`${url}/articles/${id}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) {
+      throw new Error("Could not delete");
+    }
   }
 }

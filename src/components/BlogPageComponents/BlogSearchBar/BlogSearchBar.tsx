@@ -3,6 +3,7 @@ import styles from "./BlogSearchBar.module.scss";
 import { BlogContext } from "../../../context/BlogContextProvider";
 import { ArticleService } from "../../../services/article-service";
 import search from "../../../assets/search.png"
+import { Utils } from "../../../services/utils";
 const BlogSearchBar = () => {
   const { setData } = useContext(BlogContext);
   const [searchValue, setSearchValue] = useState<string>("");
@@ -27,9 +28,8 @@ const BlogSearchBar = () => {
     e.preventDefault();
     ArticleService.getAllArticlesByKeyword(searchValue)
       .then((result) => {
-        console.log(result);
-
-        setData(result);
+        const sortedResult=Utils.sortArticlesByPublishDate(result)
+        setData(sortedResult);
       })
       .catch((e) => console.error(e));
   }

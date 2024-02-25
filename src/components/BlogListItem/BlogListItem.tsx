@@ -1,4 +1,8 @@
-import { ArticleItem, BlogContext, BlogItem } from "../../context/BlogContextProvider";
+import {
+  ArticleItem,
+  BlogContext,
+  BlogItem,
+} from "../../context/BlogContextProvider";
 import styles from "./BlogListItem.module.scss";
 import eye from "../../assets/eye.png";
 import bin from "../../assets/bin.png";
@@ -8,26 +12,34 @@ import visit from "../../assets/visit.png";
 import { Utils } from "../../services/utils";
 import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
+import { ArticleService } from "../../services/article-service";
 export interface BlogListItemProps {
   item: ArticleItem;
   index: number;
 }
 const BlogListItem = ({ item, index }: BlogListItemProps) => {
-  const { setCurrentArticleId, setShowTagModal } =
-    useContext(BlogContext);
-  
+  const {
+    setCurrentArticleId,
+    setShowTagModal,
+    dataChange,
+    setDataChange,
+    setShowDeleteModal,
+  } = useContext(BlogContext);
+
   const publishDate = Utils.changeDateFormat(item.publishDate);
 
-  const handleEditTags = (e: any) => { 
+  const handleEditTags = (e: any) => {
     e.preventDefault();
     setCurrentArticleId(index);
     setShowTagModal(true);
-  }
+  };
   const handleCheckArticle = (e: any) => {
     e.preventDefault();
   };
   const handleDeleteArticle = (e: any) => {
     e.preventDefault();
+    setCurrentArticleId(index);
+    setShowDeleteModal(true);
   };
 
   return (
@@ -47,7 +59,10 @@ const BlogListItem = ({ item, index }: BlogListItemProps) => {
               <img src={eye} alt="check article" className={styles.icon} />
               <span className={styles.tooltiptext}>View Blog</span>
             </div>
-            <div className={styles.icon_container} onClick={handleDeleteArticle}>
+            <div
+              className={styles.icon_container}
+              onClick={handleDeleteArticle}
+            >
               <img src={bin} alt="delete article" className={styles.icon} />
               <span className={styles.tooltiptext}>Delete</span>
             </div>

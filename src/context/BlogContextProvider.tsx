@@ -49,6 +49,7 @@ export interface UserItem {
 }
 const BlogContextProvider = ({ children }: any) => {
   const [data, setData] = useState<ArticleItem[]>([]);
+  const [displayData, setDisplayData] = useState<ArticleItem[]>([]);
   const [comments, setComments] = useState<CommentItem[]>([]);
   const [tags, setTags] = useState<TagItem[]>([]);
   const [users, setUsers] = useState<UserItem[]>(userSeed);
@@ -61,12 +62,14 @@ const BlogContextProvider = ({ children }: any) => {
   const [viewsChange, setViewsChange] = useState<number>(0);
   const [currentArticleId, setCurrentArticleId] = useState<number>();
   const [showTagModal, setShowTagModal] = useState<boolean>(false);
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
   // const [tagsOfCurrentArticle, setTagsOfCurrentArticle] = useState<TagItem[]>([]);
 
   useEffect(() => {
     ArticleService.get()
       .then((data) => {
         setData(data);
+        setDisplayData(data);
       })
       .catch((e) => console.error(e));
   }, [dataChange, commentChange, tagChange]);
@@ -117,6 +120,10 @@ const BlogContextProvider = ({ children }: any) => {
         setCurrentArticleId,
         showTagModal,
         setShowTagModal,
+        showDeleteModal,
+        setShowDeleteModal,
+        displayData,
+        setDisplayData,
       }}
     >
       {children}
