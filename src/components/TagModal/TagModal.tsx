@@ -42,20 +42,25 @@ const TagModal = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.tags}>
-        {tagsOfArticle.map((tag: TagItem) => {
-          return (
-            <TagOfArticle
-              tag={tag}
-              tagsOfArticle={tagsOfArticle}
-              setTagsOfArticle={setTagsOfArticle}
-              tagsOthers={tagsOthers}
-              setTagsOthers={setTagsOthers}
-              key={tag.id}
-            />
-          );
-        })}
-      </div>
+      {tagsOfArticle.length == 0 ? (
+        <div className={styles.empty}>No Tags</div>
+      ) : (
+        <div className={styles.tags}>
+          {tagsOfArticle.map((tag: TagItem) => {
+            return (
+              <TagOfArticle
+                tag={tag}
+                tagsOfArticle={tagsOfArticle}
+                setTagsOfArticle={setTagsOfArticle}
+                tagsOthers={tagsOthers}
+                setTagsOthers={setTagsOthers}
+                key={tag.id}
+              />
+            );
+          })}
+        </div>
+      )}
+
       <div className={styles.tags_other}>
         {tagsOthers.map((tag: TagItem) => {
           return (

@@ -4,6 +4,7 @@ import styles from "./Article.module.scss";
 import { ArticleService } from "../../services/article-service";
 import { BlogContext } from "../../context/BlogContextProvider";
 import { Utils } from "../../services/utils";
+import Button from "../Button/Button";
 export interface ArticleFormProps {
   title: string;
   content: string;
@@ -39,8 +40,8 @@ const ArticleForm = ({ title, content }: ArticleFormProps) => {
       ArticleService.updateArticleById(parseInt(id), data)
         .then(() => {
           let change = dataChange;
-            setDataChange(change - 1);
-            navigate("/admin/blogs", { replace: true });
+          setDataChange(change - 1);
+          navigate("/admin/articles", { replace: true });
         })
         .catch((e) => console.error(e));
     } else {
@@ -53,8 +54,8 @@ const ArticleForm = ({ title, content }: ArticleFormProps) => {
       ArticleService.createArticle(data)
         .then(() => {
           let change = dataChange;
-            setDataChange(change + 1);
-            navigate("/admin/blogs", { replace: true });
+          setDataChange(change + 1);
+          navigate("/admin/articles", { replace: true });
         })
         .catch((e) => console.error(e));
     }
@@ -76,9 +77,14 @@ const ArticleForm = ({ title, content }: ArticleFormProps) => {
         onChange={handleChangeContent}
         className={styles.content}
       ></textarea>
-      <div>
-        <button onClick={handleCancel}>Cancel</button>
-        <button onClick={handleSave}>Save</button>
+      <div className={styles.btns}>
+        <Button
+          content="Cancel"
+          onClick={handleCancel}
+          backgroundColor="white"
+          color="#5486e5"
+        />
+        <Button content="Save" onClick={handleSave} />
       </div>
     </form>
   );
