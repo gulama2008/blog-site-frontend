@@ -39,6 +39,7 @@ const BlogArchive = () => {
             <BlogArchiveItem
               formattedData={data}
               originalData={originalGroupedData[index]}
+              key={index}
             />
           );
         })}

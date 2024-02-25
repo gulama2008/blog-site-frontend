@@ -46,4 +46,13 @@ export class CommentService {
       throw new Error("Could not update");
     }
   }
+
+  public static async deleteCommentById(id: number) {
+    const response = await fetch(`${url}/comments/${id}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) {
+      throw new Error("Could not delete");
+    }
+  }
 }

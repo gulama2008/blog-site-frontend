@@ -3,15 +3,25 @@ import styles from "./ArticleContainer.module.scss";
 import { useContext, useEffect, useState } from "react";
 import { ArticleItem, BlogContext } from "../../../context/BlogContextProvider";
 import CommentForm from "../../../components/BlogPageComponents/CommentForm/CommentForm";
+import { ArticleService } from "../../../services/article-service";
 
 const ArticleContainer = () => {
   const { data } = useContext(BlogContext);
   const { id } = useParams();
-  const [currentArticle, setCurrentArticle] = useState<ArticleItem>();
-  useEffect(() => {
+    const [currentArticle, setCurrentArticle] = useState<ArticleItem>();
+    console.log(id);
+    
+    useEffect(() => {
+      console.log(id);
+      
     if (id) {
-      const article = data.find((e: ArticleItem) => e.id == parseInt(id));
-      setCurrentArticle(article);
+      ArticleService.getById(parseInt(id))
+          .then((result) => {
+            console.log("here");
+            
+          setCurrentArticle(result);
+        })
+        .catch((e) => console.error(e));
     }
   }, [id]);
   return (
@@ -31,10 +41,10 @@ const ArticleContainer = () => {
             <div>{currentArticle?.comments.length} comments</div>
           )}
         </div>
-          )}
-          <div>
-              <CommentForm/>
-          </div>
+      )}
+      <div>
+        <CommentForm />
+      </div>
     </div>
   );
 };

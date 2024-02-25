@@ -19,10 +19,18 @@ const BlogMainArticle = ({ article, index }: BlogMainArticle) => {
       .then((data) => setTags(data))
       .catch((e) => console.error(e));
   }, []);
+
+  const handleClick = () => {
+    ArticleService.updateViewsByArticleId(index)
+      .then((result) => console.log(result))
+      .catch((e) => console.error(e));
+  };
   return (
     <div className={styles.container}>
       <Link to={index.toString()}>
-        <h2 className={styles.title}>{article.title}</h2>
+        <h2 className={styles.title} onClick={handleClick}>
+          {article.title}
+        </h2>
       </Link>
       {/* <div className={styles.content_container}> */}
       <div className={styles.content}>{article.content}</div>

@@ -18,12 +18,12 @@ export interface CommentListItemProps {
   index: number;
 }
 const CommentListItem = ({ comment, index }: CommentListItemProps) => {
-  const { data } = useContext(BlogContext);
+  const { data,commentChange, setCommentChange } = useContext(BlogContext);
   const [article, setArticle] = useState<ArticleItem>();
   const [user, setUser] = useState<UserItem>();
   const [isBlocked, setIsBlocked] = useState<boolean>(comment.blocked);
   console.log("testtesttest");
-  
+
   useEffect(() => {
     CommentService.getUserByCommentId(index)
       .then((data) => setUser(data))
@@ -44,6 +44,15 @@ const CommentListItem = ({ comment, index }: CommentListItemProps) => {
     };
     CommentService.updateCommentById(index, data)
       .then(() => setIsBlocked(!isBlocked))
+      .catch((e) => console.error(e));
+  };
+
+  const handleDelete = () => {
+    CommentService.deleteCommentById(index)
+      .then(() => { 
+        const change = commentChange - 1;
+        setCommentChange(change);
+      })
       .catch((e) => console.error(e));
   };
 
@@ -73,20 +82,21 @@ const CommentListItem = ({ comment, index }: CommentListItemProps) => {
         </div>
       </div>
       <div className={styles.right}>
-        <div className={styles.options} onClick={handleBlock}>
-          {isBlocked ? (
-            <div className={styles.icon_container}>
-              <img src={unblock} alt="" className={styles.icon} />
-              <span className={styles.tooltiptext}>Unblock comment</span>
-            </div>
-          ) : (
-            <div className={styles.icon_container}>
-              <img src={block} alt="" className={styles.icon} />
-              <span className={styles.tooltiptext}>Block comment</span>
-            </div>
-          )}
-
-          <div className={styles.icon_container}>
+        <div className={styles.options}>
+          <div onClick={handleBlock}>
+            {isBlocked ? (
+              <div className={styles.icon_container}>
+                <img src={unblock} alt="" className={styles.icon} />
+                <span className={styles.tooltiptext}>Unblock comment</span>
+              </div>
+            ) : (
+              <div className={styles.icon_container}>
+                <img src={block} alt="" className={styles.icon} />
+                <span className={styles.tooltiptext}>Block comment</span>
+              </div>
+            )}
+          </div>
+          <div className={styles.icon_container} onClick={handleDelete}>
             <img src={bin} alt="" className={styles.icon} />
             <span className={styles.tooltiptext}>Delete comment</span>
           </div>

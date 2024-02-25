@@ -4,9 +4,12 @@ import { BlogContext, TagItem } from "../../../context/BlogContextProvider";
 import tag from "../../../assets/blog_tag.png";
 import { TagService } from "../../../services/tag-services";
 import { Utils } from "../../../services/utils";
+import { useNavigate } from "react-router-dom";
 const BlogTags = () => {
   const { tags, setData } = useContext(BlogContext);
+  const navigate = useNavigate();
   const handleClick = (tag: TagItem) => {
+    navigate("/blog", { replace: true });
     TagService.getAllArticlesByTagId(tag.id)
         .then(data => { 
             const sortedData = Utils.sortArticlesByPublishDate(data);

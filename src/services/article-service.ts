@@ -119,4 +119,17 @@ export class ArticleService {
       throw new Error("Could not delete");
     }
   }
+
+  public static async updateViewsByArticleId(id: number) {
+    const response = await fetch(`${url}/articles/${id}/views`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      throw new Error("Could not update");
+    }
+  }
 }
