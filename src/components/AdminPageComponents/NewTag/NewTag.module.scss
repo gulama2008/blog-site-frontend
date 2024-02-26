@@ -1,0 +1,17 @@
+.container{
+    border: 1px dashed #dfe0e2;
+    min-width: 100px;   
+    display: flex;
+    justify-content: center;
+}
+
+.input{
+    width: 100px;
+    height: 30px;
+    border: none;
+    font-size: 15px;
+}
+
+.new{
+    padding: 5px;
+}

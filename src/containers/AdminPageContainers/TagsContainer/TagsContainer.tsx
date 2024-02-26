@@ -3,6 +3,7 @@ import styles from "./TagsContainer.module.scss";
 import { BlogContext, TagItem } from "../../../context/BlogContextProvider";
 import TagListItem from "../../../components/TagListItem/TagListItem";
 import Button from "../../../components/Button/Button";
+import NewTag from "../../../components/AdminPageComponents/NewTag/NewTag";
 
 const TagsContainer = () => {
   const { tags } = useContext(BlogContext);
@@ -19,6 +20,7 @@ const TagsContainer = () => {
         {tags.map((tag: TagItem) => {
           return <TagListItem tag={tag} key={tag.id} />;
         })}
+        <NewTag/>
       </div>
     </div>
   );
