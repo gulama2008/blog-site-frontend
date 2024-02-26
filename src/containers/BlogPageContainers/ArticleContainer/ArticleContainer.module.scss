@@ -8,11 +8,22 @@
     
 }
 
+.article_container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 20px;
+}
+
 .title{
     // color: #222222;
+    width: 100%;
     font-size: 30px;
     font-weight: 600;
     color: #9d3a0b;
+    word-wrap: break-word;
 }
 
 .date{
@@ -21,13 +32,9 @@
 }
 
 .content{
+    width: 100%;
+    word-wrap: break-word;
     color: black;
+    
 }
 
-.article_container{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 20px;
-}

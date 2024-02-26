@@ -6,12 +6,13 @@ import Button from "../../../components/Button/Button";
 
 const TagsContainer = () => {
   const { tags } = useContext(BlogContext);
+  const handleClick = () => { }
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.title}>All Tags</div>
         <div>
-          <Button content="+ Add Tag" />
+          <Button content="+ Add Tag" onClick={handleClick}/>
         </div>
       </div>
       <div className={styles.tags}>

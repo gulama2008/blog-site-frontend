@@ -5,12 +5,15 @@
   padding-right: 10px;
   background-color: #0f1d42;
   color: #c8dcfe;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .head_container{
   border-bottom: 1px solid #364864;
   padding-bottom: 20px;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 }
 .title{
   display: flex;
@@ -36,11 +39,16 @@
   font-size: 20px;
   font-weight: 600;
 }
+
+.blog_link{
+  color: #c8dcfe;
+}
 .content{
   // padding-left: 20px;
   display: flex;
   flex-direction: column;
   gap: 5px;
+  border-bottom: 1px solid #364864;
 }
 
 .add_container{

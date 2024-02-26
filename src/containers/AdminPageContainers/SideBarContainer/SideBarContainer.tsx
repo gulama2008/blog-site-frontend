@@ -9,31 +9,37 @@ import statistics from "../../../assets/statistics.png";
 import { useContext, useState, useEffect } from "react";
 import { BlogContext } from "../../../context/BlogContextProvider";
 import { Link } from "react-router-dom";
+import Button from "../../../components/Button/Button";
+export const sideBarItemList = [
+  ["Article Management", articleList, "articles"],
+  ["Comment Management", comment, "comments"],
+  ["Categories/Tags", tag, "tags"],
+  ["Statistics", statistics, "statistics"],
+];
 const SideBarContainer = () => {
-  const sideBarItemList = [
-    ["Article Management", articleList, "articles"],
-    ["Comment Management", comment, "comments"],
-    ["Categories/Tags", tag, "tags"],
-    ["Statistics", statistics, "statistics"],
-  ];
-  const { showTagModal,showDeleteModal } = useContext(BlogContext);
+  const { showTagModal, showDeleteModal } = useContext(BlogContext);
   const [showModalClass, setShowModalClass] = useState<string>("");
   const containerClass = styles.container;
   useEffect(() => {
-    if (showTagModal||showDeleteModal) {
+    if (showTagModal || showDeleteModal) {
       setShowModalClass(`${containerClass} ${styles.disabled}`);
     } else {
       setShowModalClass(`${containerClass}`);
     }
-  }, [showTagModal,showDeleteModal]);
+  }, [showTagModal, showDeleteModal]);
 
   return (
     <div className={showModalClass}>
       <div className={styles.head_container}>
         <div className={styles.title}>MY DASHBOARD</div>
-        <button>
-          <Link to={"new"}>New Article</Link>
-        </button>
+        <Link to={"new"}>
+          <Button
+            content="+ New Article"
+            onClick={() => {}}
+            backgroundColor="white"
+            color="#294da1"
+          />
+        </Link>
       </div>
       <div className={styles.content}>
         {sideBarItemList.map((item, index) => {
@@ -52,7 +58,9 @@ const SideBarContainer = () => {
         <div className={styles.link}>
           <img src={link} alt="" className={styles.link_icon} />
           <div className={styles.link_content}>
-            <Link to={"/blog"}>Go To My Blog</Link>
+            <Link to={"/blog"} target="_blank" className={styles.blog_link}>
+              Go To My Blog
+            </Link>
           </div>
         </div>
       </div>

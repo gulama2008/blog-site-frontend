@@ -18,8 +18,10 @@
 }
 .tags{
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     padding: 30px;
+    
     // border: 1px solid #d0cdcd;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     min-height: 400px;

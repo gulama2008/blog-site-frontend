@@ -62,18 +62,21 @@ const TagModal = () => {
       )}
 
       <div className={styles.tags_other}>
-        {tagsOthers.map((tag: TagItem) => {
-          return (
-            <TagOthers
-              tag={tag}
-              tagsOfArticle={tagsOfArticle}
-              setTagsOfArticle={setTagsOfArticle}
-              tagsOthers={tagsOthers}
-              setTagsOthers={setTagsOthers}
-              key={tag.id}
-            />
-          );
-        })}
+        <div>Click to add more tags:</div>
+        <div className={styles.tags}>
+          {tagsOthers.map((tag: TagItem) => {
+            return (
+              <TagOthers
+                tag={tag}
+                tagsOfArticle={tagsOfArticle}
+                setTagsOfArticle={setTagsOfArticle}
+                tagsOthers={tagsOthers}
+                setTagsOthers={setTagsOthers}
+                key={tag.id}
+              />
+            );
+          })}
+        </div>
       </div>
       <div className={styles.btn}>
         <Button
