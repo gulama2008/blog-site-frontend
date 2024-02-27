@@ -61,7 +61,7 @@ const CommentListItem = ({ comment, index }: CommentListItemProps) => {
       <img src={avatar} alt="" />
       <div className={styles.details}>
         <div>
-          <span className={styles.name}>{user?.username}</span> has made a
+          <span className={styles.name}>{comment.user.username}</span> has made a
           comment on <span className={styles.name}>{article?.title}</span>
         </div>
         <div>

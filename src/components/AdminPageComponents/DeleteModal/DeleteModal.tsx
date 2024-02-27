@@ -15,6 +15,7 @@ const DeleteModal = () => {
         .then(() => {
           const change = dataChange - 1;
           setDataChange(change);
+          setShowDeleteModal(false);
         })
         .catch((e) => console.error(e));
     }

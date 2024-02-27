@@ -14,6 +14,7 @@ export interface CommentItem {
   // userId: number;
   content: string;
   commentDate: string;
+  user: UserItem;
   // articleId: number;
   blocked: boolean;
 }
@@ -46,6 +47,7 @@ export interface TagItem {
 export interface UserItem {
   id: number;
   username: string;
+  password?: string;
 }
 const BlogContextProvider = ({ children }: any) => {
   const [data, setData] = useState<ArticleItem[]>([]);

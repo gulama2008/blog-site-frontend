@@ -62,7 +62,7 @@ const TagModal = () => {
       )}
 
       <div className={styles.tags_other}>
-        <div>Click to add more tags:</div>
+        <div>Click to add tags:</div>
         <div className={styles.tags}>
           {tagsOthers.map((tag: TagItem) => {
             return (

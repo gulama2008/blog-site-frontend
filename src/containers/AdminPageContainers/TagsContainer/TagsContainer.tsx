@@ -12,9 +12,9 @@ const TagsContainer = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.title}>All Tags</div>
-        <div>
+        {/* <div>
           <Button content="+ Add Tag" onClick={handleClick}/>
-        </div>
+        </div> */}
       </div>
       <div className={styles.tags}>
         {tags.map((tag: TagItem) => {

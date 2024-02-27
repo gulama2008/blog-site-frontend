@@ -33,9 +33,9 @@ const BlogListItem = ({ item, index }: BlogListItemProps) => {
     setCurrentArticleId(index);
     setShowTagModal(true);
   };
-  const handleCheckArticle = (e: any) => {
-    e.preventDefault();
-  };
+  // const handleCheckArticle = (e: any) => {
+  //   e.preventDefault();
+  // };
   const handleDeleteArticle = (e: any) => {
     e.preventDefault();
     setCurrentArticleId(index);
@@ -55,10 +55,20 @@ const BlogListItem = ({ item, index }: BlogListItemProps) => {
               <img src={tag} alt="edit tags" className={styles.icon} />
               <span className={styles.tooltiptext}>Edit Tags</span>
             </div>
-            <div className={styles.icon_container} onClick={handleCheckArticle}>
-              <img src={eye} alt="check article" className={styles.icon} />
-              <span className={styles.tooltiptext}>View Blog</span>
-            </div>
+            <Link
+              to={`/blog/${index.toString()}`}
+              // onClick={handleCheckArticle}
+              // target="_blank"
+            >
+              <div
+                className={styles.icon_container}
+                // onClick={handleCheckArticle}
+              >
+                <img src={eye} alt="check article" className={styles.icon} />
+                <span className={styles.tooltiptext}>View Blog</span>
+              </div>
+            </Link>
+
             <div
               className={styles.icon_container}
               onClick={handleDeleteArticle}

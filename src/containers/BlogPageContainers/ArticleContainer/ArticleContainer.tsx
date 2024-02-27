@@ -8,17 +8,17 @@ import { ArticleService } from "../../../services/article-service";
 const ArticleContainer = () => {
   const { data } = useContext(BlogContext);
   const { id } = useParams();
-    const [currentArticle, setCurrentArticle] = useState<ArticleItem>();
+  const [currentArticle, setCurrentArticle] = useState<ArticleItem>();
+  console.log(id);
+
+  useEffect(() => {
     console.log(id);
-    
-    useEffect(() => {
-      console.log(id);
-      
+
     if (id) {
       ArticleService.getById(parseInt(id))
-          .then((result) => {
-            console.log("here");
-            
+        .then((result) => {
+          console.log("here");
+
           setCurrentArticle(result);
         })
         .catch((e) => console.error(e));
@@ -36,10 +36,11 @@ const ArticleContainer = () => {
       ) : (
         <div>
           {currentArticle?.comments.length == 1 ? (
-            <div>{currentArticle?.comments.length} comment</div>
+            <div>{currentArticle?.comments.length} comment:</div>
           ) : (
-            <div>{currentArticle?.comments.length} comments</div>
+            <div>{currentArticle?.comments.length} comments:</div>
           )}
+          <div></div>
         </div>
       )}
       <div>

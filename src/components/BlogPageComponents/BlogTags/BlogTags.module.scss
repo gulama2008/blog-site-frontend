@@ -14,18 +14,24 @@
 
 .tags{
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 5px;
 }
 
 .tag{
     font-size: 13px;
+    padding: 5px;
 }
 
 .tag:hover {
   cursor: pointer;
-  color: #fe331c;
-  text-decoration: underline;
+//   font-size: 16px;
+//   font-weight: 600;
+//   color: #fe331c;
+//   text-decoration: underline;
+  background-color: bisque;
+  border-radius: 3px;
 }
 
 .icon{
