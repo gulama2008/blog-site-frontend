@@ -1,18 +1,16 @@
 import {
   ArticleItem,
   BlogContext,
-  BlogItem,
-} from "../../context/BlogContextProvider";
+} from "../../../context/BlogContextProvider";
 import styles from "./BlogListItem.module.scss";
-import eye from "../../assets/eye.png";
-import bin from "../../assets/bin.png";
-import tag from "../../assets/tags.png";
-import comment from "../../assets/comments.png";
-import visit from "../../assets/visit.png";
-import { Utils } from "../../services/utils";
+import eye from "../../../assets/eye.png";
+import bin from "../../../assets/bin.png";
+import tag from "../../../assets/tags.png";
+import comment from "../../../assets/comments.png";
+import visit from "../../../assets/visit.png";
+import { Utils } from "../../../services/utils";
 import { Link } from "react-router-dom";
-import { useContext, useEffect } from "react";
-import { ArticleService } from "../../services/article-service";
+import { useContext } from "react";
 export interface BlogListItemProps {
   item: ArticleItem;
   index: number;
@@ -21,8 +19,6 @@ const BlogListItem = ({ item, index }: BlogListItemProps) => {
   const {
     setCurrentArticleId,
     setShowTagModal,
-    dataChange,
-    setDataChange,
     setShowDeleteModal,
   } = useContext(BlogContext);
 
@@ -57,12 +53,9 @@ const BlogListItem = ({ item, index }: BlogListItemProps) => {
             </div>
             <Link
               to={`/blog/${index.toString()}`}
-              // onClick={handleCheckArticle}
-              // target="_blank"
             >
               <div
                 className={styles.icon_container}
-                // onClick={handleCheckArticle}
               >
                 <img src={eye} alt="check article" className={styles.icon} />
                 <span className={styles.tooltiptext}>View Blog</span>

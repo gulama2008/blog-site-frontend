@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./Article.module.scss";
-import { ArticleService } from "../../services/article-service";
-import { BlogContext } from "../../context/BlogContextProvider";
-import { Utils } from "../../services/utils";
+import { ArticleService } from "../../../services/article-service";
+import { BlogContext } from "../../../context/BlogContextProvider";
+import { Utils } from "../../../services/utils";
 import Button from "../Button/Button";
 export interface ArticleFormProps {
   title: string;
@@ -31,7 +31,6 @@ const ArticleForm = ({ title, content }: ArticleFormProps) => {
 
   const handleSave = (e: any) => {
     e.preventDefault();
-
     if (id) {
       const data = {
         title: formTitle,

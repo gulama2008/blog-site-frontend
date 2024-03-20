@@ -3,22 +3,21 @@ import {
   BlogContext,
   CommentItem,
   UserItem,
-} from "../../context/BlogContextProvider";
+} from "../../../context/BlogContextProvider";
 import styles from "./CommentListItem.module.scss";
-import avatar from "../../assets/avatar.png";
-import { Utils } from "../../services/utils";
+import avatar from "../../../assets/avatar.png";
 import { useContext, useEffect, useState } from "react";
 import ShowMoreText from "react-show-more-text";
-import bin from "../../assets/bin.png";
-import block from "../../assets/block.png";
-import unblock from "../../assets/unblock.png";
-import { CommentService } from "../../services/comment-service";
+import bin from "../../../assets/bin.png";
+import block from "../../../assets/block.png";
+import unblock from "../../../assets/unblock.png";
+import { CommentService } from "../../../services/comment-service";
 export interface CommentListItemProps {
   comment: CommentItem;
   index: number;
 }
 const CommentListItem = ({ comment, index }: CommentListItemProps) => {
-  const { data,commentChange, setCommentChange } = useContext(BlogContext);
+  const { commentChange, setCommentChange } = useContext(BlogContext);
   const [article, setArticle] = useState<ArticleItem>();
   const [user, setUser] = useState<UserItem>();
   const [isBlocked, setIsBlocked] = useState<boolean>(comment.blocked);
@@ -49,7 +48,7 @@ const CommentListItem = ({ comment, index }: CommentListItemProps) => {
 
   const handleDelete = () => {
     CommentService.deleteCommentById(index)
-      .then(() => { 
+      .then(() => {
         const change = commentChange - 1;
         setCommentChange(change);
       })
@@ -61,8 +60,8 @@ const CommentListItem = ({ comment, index }: CommentListItemProps) => {
       <img src={avatar} alt="" />
       <div className={styles.details}>
         <div>
-          <span className={styles.name}>{comment.user.username}</span> has made a
-          comment on <span className={styles.name}>{article?.title}</span>
+          <span className={styles.name}>{comment.user.username}</span> has made
+          a comment on <span className={styles.name}>{article?.title}</span>
         </div>
         <div>
           <ShowMoreText
