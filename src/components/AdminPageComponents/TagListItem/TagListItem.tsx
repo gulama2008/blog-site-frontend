@@ -1,7 +1,7 @@
-import { BlogContext, TagItem } from "../../context/BlogContextProvider";
+import { BlogContext, TagItem } from "../../../context/BlogContextProvider";
 import styles from "./TagListItem.module.scss";
-import cross from "../../assets/cross.png";
-import { TagService } from "../../services/tag-services";
+import cross from "../../../assets/cross.png";
+import { TagService } from "../../../services/tag-services";
 import { useContext } from "react";
 export interface TagListItemProps {
   tag: TagItem;

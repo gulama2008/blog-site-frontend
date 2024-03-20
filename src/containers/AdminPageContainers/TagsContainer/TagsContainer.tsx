@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import styles from "./TagsContainer.module.scss";
 import { BlogContext, TagItem } from "../../../context/BlogContextProvider";
-import TagListItem from "../../../components/TagListItem/TagListItem";
-import Button from "../../../components/Button/Button";
+import TagListItem from "../../../components/AdminPageComponents/TagListItem/TagListItem";
+import Button from "../../../components/AdminPageComponents/Button/Button";
 import NewTag from "../../../components/AdminPageComponents/NewTag/NewTag";
 
 const TagsContainer = () => {
   const { tags } = useContext(BlogContext);
-  const handleClick = () => { }
+  const handleClick = () => {};
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -20,7 +20,7 @@ const TagsContainer = () => {
         {tags.map((tag: TagItem) => {
           return <TagListItem tag={tag} key={tag.id} />;
         })}
-        <NewTag/>
+        <NewTag />
       </div>
     </div>
   );

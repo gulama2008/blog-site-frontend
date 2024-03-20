@@ -6,7 +6,7 @@ import {
   BlogItem,
 } from "../../../context/BlogContextProvider";
 import styles from "./EditArticleContainer.module.scss";
-import ArticleForm from "../../../components/ArticleForm/ArticleForm";
+import ArticleForm from "../../../components/AdminPageComponents/ArticleForm/ArticleForm";
 
 const EditArticleContainer = () => {
   const { data, setDataChange, dataChange } = useContext(BlogContext);

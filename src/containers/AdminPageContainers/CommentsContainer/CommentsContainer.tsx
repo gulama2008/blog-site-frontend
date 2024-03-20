@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { BlogContext, CommentItem } from "../../../context/BlogContextProvider";
-import CommentListItem from "../../../components/CommentListItem/CommentListItem";
+import CommentListItem from "../../../components/AdminPageComponents/CommentListItem/CommentListItem";
 import styles from "./CommentsContainer.module.scss";
 const CommentsContainer = () => {
   const { comments } = useContext(BlogContext);

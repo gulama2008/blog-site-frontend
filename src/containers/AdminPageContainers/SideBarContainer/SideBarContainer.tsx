@@ -1,5 +1,5 @@
 import styles from "./SideBarContainer.module.scss";
-import SideBarItem from "../../../components/SideBarItem/SideBarItem";
+import SideBarItem from "../../../components/AdminPageComponents/SideBarItem/SideBarItem";
 import newArticle from "../../assets/new.png";
 import articleList from "../../../assets/list.png";
 import comment from "../../../assets/comment.png";
@@ -9,7 +9,7 @@ import statistics from "../../../assets/statistics.png";
 import { useContext, useState, useEffect } from "react";
 import { BlogContext } from "../../../context/BlogContextProvider";
 import { Link } from "react-router-dom";
-import Button from "../../../components/Button/Button";
+import Button from "../../../components/AdminPageComponents/Button/Button";
 export const sideBarItemList = [
   ["Article Management", articleList, "articles"],
   ["Comment Management", comment, "comments"],

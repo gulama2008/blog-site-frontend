@@ -1,8 +1,8 @@
-import Button from '../../Button/Button'
-import styles from './CommentForm.module.scss'
+import Button from "../../AdminPageComponents/Button/Button";
+import styles from "./CommentForm.module.scss";
 
 const CommentForm = () => {
-  const handleClick = () => { }
+  const handleClick = () => {};
   return (
     <form className={styles.container}>
       <label htmlFor="comment" className={styles.label}>
@@ -25,6 +25,6 @@ const CommentForm = () => {
       </div>
     </form>
   );
-}
+};
 
-export default CommentForm
+export default CommentForm;

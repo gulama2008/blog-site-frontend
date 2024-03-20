@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { BlogContext, TagItem } from "../../context/BlogContextProvider";
+import { BlogContext, TagItem } from "../../../context/BlogContextProvider";
 import TagListItem from "../TagListItem/TagListItem";
-import { ArticleService } from "../../services/article-service";
+import { ArticleService } from "../../../services/article-service";
 import styles from "./TagModal.module.scss";
-import { Utils } from "../../services/utils";
+import { Utils } from "../../../services/utils";
 import TagOfArticle from "../TagOfArticle/TagOfArticle";
 import TagOthers from "../TagOthers/TagOthers";
 import Button from "../Button/Button";

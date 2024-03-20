@@ -4,11 +4,11 @@ import {
   BlogContext,
   BlogItem,
 } from "../../../context/BlogContextProvider";
-import BlogListItem from "../../../components/BlogListItem/BlogListItem";
+import BlogListItem from "../../../components/AdminPageComponents/BlogListItem/BlogListItem";
 import styles from "./BlogListContainer.module.scss";
 import { useForm } from "react-hook-form";
-import TagModal from "../../../components/TagModal/TagModal";
-import Button from "../../../components/Button/Button";
+import TagModal from "../../../components/AdminPageComponents/TagModal/TagModal";
+import Button from "../../../components/AdminPageComponents/Button/Button";
 import DeleteModal from "../../../components/AdminPageComponents/DeleteModal/DeleteModal";
 import { ArticleService } from "../../../services/article-service";
 export interface FormData {
@@ -16,8 +16,14 @@ export interface FormData {
   toDate: string;
 }
 const BlogListContainer = () => {
-  const { data, setData,displayData,setDisplayData, showTagModal, showDeleteModal } =
-    useContext(BlogContext);
+  const {
+    data,
+    setData,
+    displayData,
+    setDisplayData,
+    showTagModal,
+    showDeleteModal,
+  } = useContext(BlogContext);
   const [showModalClass, setShowModalClass] = useState<string>("");
 
   // const containerClass = styles.container;
@@ -80,7 +86,7 @@ const BlogListContainer = () => {
               {...register("toDate")}
             />
             <button className={styles.btn}>Filter</button>
-            <Button content="Clear" onClick={handleClear}  />
+            <Button content="Clear" onClick={handleClear} />
           </form>
         </div>
         <div className={styles.bloglist}>
